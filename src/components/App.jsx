@@ -29,7 +29,7 @@ const App = () => {
     setError('')
     try {
       const data = await getImagesBySearch(searchQuery, currentPage);
-      setHits([...data.hits])
+      setHits((prev) => [...prev, ...data.hits])
     setTotalPages(Math.floor(data.totalHits / 12));
     toast.success(`page: ${currentPage}`);
       if (data.hits.length === 0) {
